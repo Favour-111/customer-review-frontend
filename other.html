@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playwrite+MX+Guides&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <meta charset="UTF-8" />
+    <title>Review System</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .body {
+        padding: 30px;
+      }
+      .header-cont {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+      }
+
+      .header1 {
+        font-family: "TWKLausanne", sans-serif !important;
+        font-size: 35px;
+        text-transform: capitalize;
+        font-weight: 600;
+        color: #fccdcc;
+      }
+      .like-btn,
+      .unlike-btn {
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .liked {
+        color: green;
+      }
+
+      .disliked {
+        color: red;
+      }
+      .headerOne {
+        font-family: "Dancing Script", cursive;
+        font-optical-sizing: auto;
+        font-size: 45px;
+        text-transform: capitalize;
+        font-weight: 600;
+        margin-bottom: 5px;
+        font-style: normal;
+      }
+      .rating-cont {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+      }
+      .raing {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        img {
+          width: 90px;
+        }
+      }
+      .rating-number {
+        font-family: "TWKLausanne", sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .review {
+        font-family: "TWKLausanne", sans-serif;
+        font-size: 13px;
+        margin-top: 7px;
+      }
+      .line {
+        background-color: #e3e3e3 !important;
+        height: 80px !important;
+        width: 1px !important;
+      }
+      .review-line {
+        margin-top: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .review-line-item {
+        width: 120px;
+        border: 1px solid black;
+        height: 9px;
+
+        border-radius: 10px;
+        background-color: transparent;
+        .review-color {
+          background-color: black;
+          width: 90%;
+          height: 8px;
+          border-radius: 10px;
+        }
+        .review-color-two {
+          background-color: black;
+          width: 10%;
+          height: 8px;
+          border-radius: 10px;
+        }
+        .review-color-three {
+          background-color: black;
+          width: 5%;
+          height: 8px;
+          border-radius: 10px;
+        }
+        .review-color-four {
+          background-color: black;
+          width: 0%;
+          height: 8px;
+          border-radius: 10px;
+        }
+      }
+      .review-line-number {
+        font-size: 11px;
+        font-family: "TWKLausanne", sans-serif;
+        color: rgba(0, 0, 0, 0.685);
+      }
+      .small-img {
+        display: flex;
+        align-items: center;
+        gap: 1px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        div {
+          img {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+          }
+        }
+      }
+      .button-show {
+        height: 30px;
+        width: 130px;
+        border: none;
+        border-radius: 20px;
+        background-color: rgb(252, 205, 204);
+        box-shadow: 2px 0px 17px 0px rgba(252, 205, 204);
+        font-size: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: "TWKLausanne", sans-serif;
+      }
+      .hidden {
+        display: none;
+      }
+      .form-container {
+        border: 1px solid #e3e3e3;
+        margin-top: 20px;
+        padding: 20px;
+        label {
+          font-family: "TWKLausanne", sans-serif;
+          font-size: 11px;
+        }
+        .form-one {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          input {
+            margin-top: 9px;
+            padding: 5px 10px;
+            border: 1px solid #d6d4d4;
+            border-radius: 10px;
+            width: 220px;
+          }
+        }
+      }
+      .review-cont {
+        margin-top: 10px;
+        input {
+          width: 98%;
+          padding: 5px 10px;
+          border: 1px solid #d6d4d4;
+          border-radius: 10px;
+          margin-top: 9px;
+        }
+      }
+      .stars span {
+        font-size: 24px;
+        cursor: pointer;
+        color: #ed1c24;
+      }
+      .stars span.filled {
+        color: gold;
+      }
+      .text-cont {
+        margin-top: 10px;
+        textarea {
+          width: 98%;
+          padding: 5px 10px;
+          border: 1px solid #d6d4d4;
+          border-radius: 10px;
+          resize: none;
+          margin-top: 9px;
+          height: 200px;
+        }
+      }
+      .radio-cont {
+        display: flex;
+        margin-top: 10px;
+        align-items: center;
+        font-family: "TWKLausanne", sans-serif;
+        font-size: 12px;
+      }
+      .submit {
+        background-color: rgb(252, 205, 204);
+        box-shadow: 2px 0px 17px 0px rgba(252, 205, 204);
+        text-transform: uppercase;
+        font-size: 10px;
+        border: none;
+        color: black;
+        padding: 7px 50px;
+        border-radius: 10px;
+      }
+
+      #fileInput {
+        display: none;
+      }
+
+      .photo {
+        cursor: pointer;
+        border: 1px solid #fccdcc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 5px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        width: 120px;
+        font-family: "TWKLausanne", sans-serif;
+
+        img {
+          width: 13px;
+          margin-bottom: 2px;
+        }
+      }
+      .footer {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        justify-content: space-between;
+      }
+      .linedown {
+        height: 1px;
+        width: 100%;
+        background-color: #e3e3e3;
+        margin-top: 60px;
+      }
+      .input {
+        border: 1px solid #e3e3e3;
+        margin-top: 10px;
+        border-radius: 20px;
+        padding: 7px 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        width: 300px;
+
+        input {
+          background: transparent !important;
+          box-shadow: none !important;
+          border: none !important;
+          outline: none !important;
+        }
+        img {
+          width: 12px;
+        }
+      }
+      .filter-text {
+        margin-top: 20px;
+        font-family: "TWKLausanne", sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .filter-cont {
+        margin-top: 20px;
+        width: 500px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        .filter-content {
+          border: 1px solid black;
+          font-size: 10px;
+          font-family: "TWKLausanne", sans-serif;
+          font-weight: normal;
+          text-transform: uppercase;
+          padding: 9px 17px;
+          border-radius: 20px;
+        }
+      }
+      .custom-select {
+        margin-bottom: 30px;
+        position: relative;
+        width: 200px;
+      }
+
+      .select-wrapper {
+        display: block;
+        position: relative;
+      }
+
+      .select-wrapper select {
+        padding: 10px;
+        width: 100%;
+        font-size: 12px;
+        margin-top: 30px;
+        outline: none;
+        border: 1px solid #e3e3e3;
+        border-radius: 20px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: white;
+      }
+
+      .select-wrapper .down {
+        border-left: 1px solid #d6d4d4;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background-color: #e3e3e3;
+        border-radius: 0 20px 20px 0;
+        padding: 8px 20px;
+        height: 39px;
+        display: flex;
+        align-items: center;
+        pointer-events: none; /* Let click pass through to select */
+      }
+
+      .select-wrapper .down img {
+        width: 10px;
+      }
+      ::placeholder {
+        font-size: 12px;
+      }
+      .comment {
+        .review-head {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          .profile-cont {
+            position: relative;
+            .Profile {
+              background-color: #fee5e5;
+              color: black;
+              height: 45px;
+              width: 45px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 40px;
+              font-size: 25px;
+              font-family: "TWKLausanne", sans-serif;
+              font-weight: 700;
+            }
+            .verified {
+              img {
+                position: absolute;
+                bottom: -8px;
+                right: -5px;
+                width: 24px;
+              }
+            }
+          }
+          .name {
+            font-size: 14px;
+            font-family: "TWKLausanne", sans-serif;
+            span {
+              font-size: 12px;
+            }
+          }
+          .flag {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+            img {
+              width: 14px;
+            }
+            span {
+              color: #787878;
+              font-size: 11px;
+              font-family: "TWKLausanne", sans-serif;
+            }
+          }
+        }
+        .star {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          margin-top: 10px;
+          img {
+            width: 80px;
+          }
+          div {
+            font-family: "TWKLausanne", sans-serif;
+          }
+        }
+        .comment-description {
+          margin-top: 14px;
+          font-family: "TWKLausanne", sans-serif;
+          font-weight: 100 !important;
+        }
+        .concern {
+          margin-top: 15px;
+          display: flex;
+          align-items: center;
+          gap: 50px;
+          .concern-head {
+            font-size: 12px;
+            font-weight: bold;
+            font-family: "TWKLausanne", sans-serif;
+          }
+          .concern-cont {
+            margin-top: 5px;
+            font-size: 12px;
+            font-weight: lighter;
+            font-family: "TWKLausanne", sans-serif;
+          }
+        }
+      }
+      .type {
+        margin-top: 20px;
+        font-size: 12px;
+        font-family: "TWKLausanne", sans-serif;
+      }
+      .share {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        margin-bottom: 30px;
+
+        margin-top: 15px;
+        font-family: "TWKLausanne", sans-serif;
+        img {
+          width: 13px;
+          margin-top: 5px;
+        }
+      }
+      .share-cont {
+        display: flex;
+        align-items: center;
+        font-family: "TWKLausanne", sans-serif;
+        font-size: 12px;
+        border-bottom: 1px solid #e3e3e3;
+        margin-bottom: 30px;
+        justify-content: space-between;
+      }
+      .star {
+        .stars {
+          color: #ed1c24;
+        }
+      }
+      .line-down {
+        height: 1px;
+        width: 100%;
+        background-color: #e3e3e3;
+        margin: 30px 0;
+      }
+      .review-container {
+        margin-top: 20px;
+      }
+      .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+        }
+      }
+      .pagination-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+
+      .active-page {
+        font-weight: bold;
+      }
+      .glow-head {
+        display: flex;
+        justify-content: space-between;
+      }
+      .like-btn.active {
+        color: green;
+      }
+      .unlike-btn.active {
+        color: red;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        padding-top: 50px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: auto !important;
+        max-height: 100%;
+        animation: zoom 0.3s ease-in-out;
+      }
+
+      @keyframes zoom {
+        from {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .close {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .Filter-select-cont {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .name {
+        font-weight: bold;
+      }
+      @media screen and (max-width: 570px) {
+        .footer {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column-reverse;
+          gap: 20px;
+        }
+        select {
+          font-size: 10px !important;
+        }
+        .header-cont {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .filter-cont {
+          width: 100%;
+        }
+        .glow-head {
+          flex-direction: column;
+        }
+        .button-show {
+          margin-top: 10px;
+        }
+        .form-one {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          width: 100%;
+          div {
+            width: 100%;
+            input {
+              width: 100% !important;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 768px) {
+        .modal-content {
+          margin: auto;
+          display: block;
+          width: 90% !important;
+          max-height: 100vh !important;
+          margin-top: 30px;
+          animation: zoom 0.3s ease-in-out;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="body">
+      <div class="header-cont">
+        <div class="headerOne">Glowing</div>
+        <div class="header1">Testimonials</div>
+      </div>
+      <div class="rating-cont">
+        <div style="display: flex; gap: 10px">
+          <div>
+            <div class="raing">
+              <div class="rating-number">4.8</div>
+              <div>
+                <img src="https://pngimg.com/d/star_PNG76886.png" alt="" />
+              </div>
+            </div>
+            <div class="review">Based on 75200 Reviews</div>
+          </div>
+
+          <div class="line"></div>
+        </div>
+        <div>
+          <div>
+            <div class="review-line">
+              <div class="review-line-item">
+                <div class="review-color">.</div>
+              </div>
+              <div class="review-line-number">(74700)</div>
+            </div>
+            <div class="review-line">
+              <div class="review-line-item">
+                <div class="review-color-two">.</div>
+              </div>
+              <div class="review-line-number">(400)</div>
+            </div>
+            <div class="review-line">
+              <div class="review-line-item">
+                <div class="review-color-three">.</div>
+              </div>
+              <div class="review-line-number">(97)</div>
+            </div>
+            <div class="review-line">
+              <div class="review-line-item">
+                <div class="review-color-four"></div>
+              </div>
+              <div class="review-line-number">(2)</div>
+            </div>
+            <div class="review-line">
+              <div class="review-line-item">
+                <div class="review-color-four"></div>
+              </div>
+              <div class="review-line-number">(1)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="glow-head">
+        <div class="small-img">
+          <div>
+            <img
+              src="https://www.solawave.co/cdn/shop/files/SkincareWand10.webp?v=1743120349&width=800"
+              alt=""
+              onclick="openImage(this.src)"
+            />
+          </div>
+          <div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRRn6ZVdsEHwtxv9Q31C9Ui5iyhhRdAXFzrw&s"
+              alt=""
+              onclick="openImage(this.src)"
+            />
+          </div>
+          <div>
+            <img
+              src="https://www.solawave.co/cdn/shop/files/sol-pa-d.png?v=1731685677&width=1500"
+              alt=""
+              onclick="openImage(this.src)"
+            />
+          </div>
+          <div>
+            <img
+              src="https://www.solawave.co/cdn/shop/files/RoseGold_7d9402f8-4d73-44e5-95cf-55a62049e656.jpg?v=1743516489&width=1500"
+              alt=""
+              onclick="openImage(this.src)"
+            />
+          </div>
+          <div>
+            <img
+              src="https://www.solawave.co/cdn/shop/files/AdditonalGalleryAssets-Wand-640x640-5_1200x.webp?v=1743451945"
+              alt=""
+              onclick="openImage(this.src)"
+            />
+          </div>
+          <div>
+            <img
+              src="https://www.beautyindependent.com/wp-content/uploads/2021/11/SolaWave-header.jpg"
+              alt=""
+              onclick="openImage(this.src)"
+            />
+          </div>
+          <div>
+            <img
+              src="https://hips.hearstapps.com/hmg-prod/images/chiara-trying-solawave-65b2de528aeba.jpg"
+              alt=""
+              onclick="openImage(this.src)"
+            />
+          </div>
+          <div>
+            <img
+              src="https://www.solawave.co/cdn/shop/articles/Rejuvenating_Skin_With_Red_Light_Therapy.webp?v=1737397370"
+              alt=""
+              onclick="openImage(this.src)"
+            />
+          </div>
+        </div>
+        <button class="button-show" onclick="toggleForm()">
+          Write a Review
+        </button>
+      </div>
+
+      <!-- Modal -->
+      <div id="imgModal" class="modal" onclick="closeImage()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg" />
+      </div>
+
+      <div class="linedown"></div>
+      <div>
+        <div class="filter-text">Filter Review</div>
+        <div class="input">
+          <div>
+            <img
+              src="https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-21.png"
+              alt=""
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search reviews..."
+              oninput="renderReviews()"
+            />
+          </div>
+        </div>
+
+        <div class="Filter-select-cont">
+          <!-- First Select -->
+          <div class="custom-select">
+            <label class="select-wrapper">
+              <select id="ageSelect" onchange="renderReviews()">
+                <option value="">What's your age</option>
+                <option value="18-27">18-27</option>
+                <option value="28-37">28-37</option>
+                <option value="38-47">38-47</option>
+                <option value="48-57">48-57</option>
+                <option value="68-77">68-77</option>
+                <option value="78+">78+</option>
+              </select>
+              <div class="down">
+                <img
+                  src="https://vieuxfourmanago.com/wp-content/uploads/2017/06/Down-Arrow-PNG-HD.png"
+                  alt="arrow"
+                />
+              </div>
+            </label>
+          </div>
+
+          <!-- Second Select -->
+          <div class="custom-select">
+            <label class="select-wrapper">
+              <select id="sortSelect" onchange="renderReviews()">
+                <option value="">Sort</option>
+                <option value="recent">Most Recent</option>
+                <option value="high">Highest Rating</option>
+                <option value="low">Lower Rating</option>
+                <option value="helpful">Most Helpful</option>
+              </select>
+              <div class="down">
+                <img
+                  src="https://vieuxfourmanago.com/wp-content/uploads/2017/06/Down-Arrow-PNG-HD.png"
+                  alt="arrow"
+                />
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <form
+        style="display: none"
+        id="reviewForm"
+        onsubmit="submitReview(event)"
+      >
+        <div class="form-container">
+          <div class="form-one">
+            <div>
+              <label for="">Name</label><br />
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+              /><br />
+            </div>
+            <div>
+              <label for="">Email</label><br />
+              <input
+                type="email"
+                id="email"
+                placeholder="john.smith@gmail.com"
+                required
+              /><br />
+            </div>
+          </div>
+          <div style="margin-top: 10px">
+            <label>Rating</label>
+            <div class="stars" id="stars">
+              <span data-value="1">☆</span>
+              <span data-value="2">☆</span>
+              <span data-value="3">☆</span>
+              <span data-value="4">☆</span>
+              <span data-value="5">☆</span>
+            </div>
+          </div>
+          <div class="review-cont">
+            <label for="">Title of Review</label>
+            <input type="text" id="title" placeholder="Review Title" required />
+          </div>
+          <div class="text-cont">
+            <label for="">How was your overall experience</label><br />
+            <textarea id="description" required></textarea>
+          </div>
+
+          <br />
+          <div>
+            <label>What's your age?</label><br />
+            <div class="radio-cont">
+              <input type="radio" name="age" value="18-27" /> 18-27
+            </div>
+            <div class="radio-cont">
+              <input type="radio" name="age" value="28-37" /> 28-37
+            </div>
+            <div class="radio-cont">
+              <input type="radio" name="age" value="38-47" /> 38-47
+            </div>
+            <div class="radio-cont">
+              <input type="radio" name="age" value="58-67" /> 58-67
+            </div>
+            <div class="radio-cont">
+              <input type="radio" name="age" value="68-77" /> 68-77
+            </div>
+            <div class="radio-cont">
+              <input type="radio" name="age" value="78+" /> 78+
+            </div>
+          </div>
+          <div class="review-cont">
+            <label for="">Skin Concern</label>
+            <input type="text" id="concern" required />
+          </div>
+          <label style="margin-top: 10px">Do you recommend this product?</label>
+          <div class="radio-cont">
+            <input type="radio" name="recommend" value="Yes" /> Yes
+          </div>
+          <div class="radio-cont">
+            <input type="radio" name="recommend" value="No" /> No<br />
+          </div>
+          <div class="footer">
+            <button type="submit" class="submit" id="submitBtn">Submit</button>
+            <div id="loading" style="display: none"></div>
+
+            <input type="file" id="fileInput" accept="image/*" />
+
+            <!-- Clickable div -->
+            <div
+              class="photo"
+              onclick="document.getElementById('fileInput').click()"
+            >
+              <div>
+                <img
+                  src="https://cdn-icons-png.freepik.com/512/83/83574.png"
+                  alt=""
+                />
+              </div>
+              Add Photos
+            </div>
+          </div>
+        </div>
+      </form>
+      <div
+        id="loadingText"
+        style="
+          display: none;
+          font-weight: bold;
+          text-align: center;
+          margin: 20px;
+        "
+      >
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <div id="reviewsContainer" class="mt-4"></div>
+      <div id="reviewsContainer" style="margin-top: 30px"></div>
+      <div class="pagination">
+        <button onclick="prevPage()"><</button>
+        <div id="paginationNumbers" style="display: inline-block"></div>
+        <!-- THIS MUST EXIST -->
+        <button onclick="nextPage()">></button>
+      </div>
+    </div>
+
+    <script>
+      // Optional: handle file selection
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            console.log("Selected file:", file.name);
+          }
+        });
+      function openImage(src) {
+        const modal = document.getElementById("imgModal");
+        const modalImg = document.getElementById("modalImg");
+        modal.style.display = "block";
+        modalImg.src = src;
+      }
+
+      function closeImage() {
+        document.getElementById("imgModal").style.display = "none";
+      }
+      let selectedRating = 0;
+      document.querySelectorAll(".stars span").forEach((star) => {
+        star.addEventListener("click", function () {
+          selectedRating = this.getAttribute("data-value");
+          document.querySelectorAll(".stars span").forEach((s) => {
+            s.classList.remove("filled");
+          });
+          for (let i = 0; i < selectedRating; i++) {
+            document.querySelectorAll(".stars span")[i].classList.add("filled");
+          }
+        });
+      });
+      let reviews = [];
+
+      let currentPage = 1;
+      const perPage = 5;
+      const userActions = {};
+
+      function toggleForm() {
+        const form = document.getElementById("reviewForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+      }
+
+      function submitReview(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const loading = document.getElementById("loading");
+        const submitBtn = document.getElementById("submitBtn");
+
+        // Check if the loading element and submit button exist
+        if (loading && submitBtn) {
+          loading.style.display = "block"; // Show loading text
+          submitBtn.textContent = "Loading..."; // Change button text
+          submitBtn.disabled = true; // Optionally disable to prevent double click
+        } else {
+          console.error("Loading element or submit button not found.");
+          return;
+        }
+
+        // Capture the review data
+        const newReview = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          rating: selectedRating,
+          title: document.getElementById("title").value,
+          experience: document.getElementById("description").value,
+          age: document.querySelector('input[name="age"]:checked')?.value,
+          concern: document.getElementById("concern").value,
+          recommend: document.querySelector('input[name="recommend"]:checked')
+            ?.value,
+          likes: 0,
+          unlikes: 0,
+          created: new Date(),
+        };
+
+        // Send the review to the API endpoint
+        fetch("https://review-j8y6.onrender.com/api/reviews", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newReview),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Review submitted successfully:", data);
+            reviews.unshift(data);
+            currentPage = 1;
+            renderReviews();
+          })
+          .catch((error) => {
+            console.error("Error submitting review:", error);
+          })
+          .finally(() => {
+            if (loading && submitBtn) {
+              loading.style.display = "none"; // Hide extra loader
+              submitBtn.textContent = "Submit"; // Restore button text
+              submitBtn.disabled = false; // Enable button again
+            }
+
+            selectedRating = 0;
+            document
+              .querySelectorAll(".stars span")
+              .forEach((s) => s.classList.remove("filled"));
+            event.target.reset();
+            toggleForm();
+          });
+      }
+
+      function like(index) {
+        const review = filteredReviews()[index];
+        const reviewId = review._id;
+
+        const action = userActions[reviewId];
+
+        if (action === "like") {
+          // Already liked - ignore or toggle (optional)
+          return;
+        }
+
+        fetch(`https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`, {
+          method: "POST",
+        })
+          .then((res) => res.json())
+          .then((updatedReview) => {
+            const actualIndex = reviews.findIndex((r) => r._id === reviewId);
+            reviews[actualIndex] = updatedReview;
+            userActions[reviewId] = "like";
+            renderReviews();
+          })
+          .catch((err) => console.error("Error liking review:", err));
+      }
+
+      function unlike(index) {
+        const review = filteredReviews()[index];
+        const reviewId = review._id;
+
+        const action = userActions[reviewId];
+
+        if (action === "dislike") {
+          // Already disliked - ignore or toggle (optional)
+          return;
+        }
+
+        fetch(
+          `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
+          {
+            method: "POST",
+          }
+        )
+          .then((res) => res.json())
+          .then((updatedReview) => {
+            const actualIndex = reviews.findIndex((r) => r._id === reviewId);
+            reviews[actualIndex] = updatedReview;
+            userActions[reviewId] = "dislike";
+            renderReviews();
+          })
+          .catch((err) => console.error("Error disliking review:", err));
+      }
+
+      function filteredReviews() {
+        const search =
+          document.getElementById("searchInput")?.value.toLowerCase() || "";
+        const sortBy = document.getElementById("sortSelect")?.value || "";
+        const ageFilter = document.getElementById("ageSelect")?.value || "";
+
+        let filtered = reviews.filter(
+          (r) =>
+            r.name.toLowerCase().includes(search) ||
+            r.title.toLowerCase().includes(search) ||
+            r.experience.toLowerCase().includes(search)
+        );
+
+        if (ageFilter) {
+          const [minAge, maxAge] = ageFilter.includes("+")
+            ? [parseInt(ageFilter), 150]
+            : ageFilter.split("-").map(Number);
+          filtered = filtered.filter((r) => {
+            const ageNum = parseInt(r.age);
+            return ageNum >= minAge && ageNum <= maxAge;
+          });
+        }
+
+        switch (sortBy) {
+          case "recent":
+            filtered.sort((a, b) => new Date(b.created) - new Date(a.created));
+            break;
+          case "high":
+            filtered.sort((a, b) => b.rating - a.rating);
+            break;
+          case "low":
+            filtered.sort((a, b) => a.rating - b.rating);
+            break;
+          case "helpful":
+            filtered.sort(
+              (a, b) => b.likes - b.unlikes - (a.likes - a.unlikes)
+            );
+            break;
+        }
+
+        return filtered;
+      }
+
+      function renderPagination() {
+        const paginationContainer =
+          document.getElementById("paginationNumbers");
+        const totalPages = Math.ceil(filteredReviews().length / perPage);
+
+        paginationContainer.innerHTML = "";
+
+        for (let i = 1; i <= totalPages; i++) {
+          paginationContainer.innerHTML += `
+              <button
+                onclick="goToPage(${i})"
+                style="font-weight: ${
+                  i === currentPage ? "bold" : "normal"
+                }; margin: 0 5px;"
+              >
+                ${i}
+              </button>
+            `;
+        }
+      }
+
+      function goToPage(page) {
+        currentPage = page;
+        renderReviews();
+      }
+
+      function nextPage() {
+        const totalPages = Math.ceil(filteredReviews().length / perPage);
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderReviews();
+        }
+      }
+
+      function prevPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          renderReviews();
+        }
+      }
+      async function fetchReviews() {
+        const loadingText = document.getElementById("loadingText");
+        loadingText.style.display = "block"; // Show loading text
+
+        await fetch("https://review-j8y6.onrender.com/api/reviews")
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            reviews = data;
+            renderReviews();
+          })
+          .catch((error) => {
+            console.error("Error fetching reviews:", error);
+          })
+          .finally(() => {
+            loadingText.style.display = "none"; // Hide loading text after done
+          });
+      }
+
+      fetchReviews();
+      function renderReviews() {
+        const container = document.getElementById("reviewsContainer");
+        const allReviews = filteredReviews(); // This already filters the reviews based on the search, sorting, and age filter
+        const start = (currentPage - 1) * perPage;
+        const end = start + perPage;
+        const pageReviews = allReviews.slice(start, end); // Slice the reviews to show only the current page's reviews
+
+        container.innerHTML = ""; // Clear the container before rendering
+        pageReviews.forEach((review, i) => {
+          const action = userActions[review._id];
+          container.innerHTML += `
+        <div class="comment">
+          <div class="review-head">
+            <div class="profile-cont">
+              <div class="Profile">${review.name.charAt(0)}</div>
+              <div class="verified">
+                <img src="https://cdn-icons-png.freepik.com/512/7595/7595571.png" alt="" />
+              </div>
+            </div>
+            <div>
+              <div class="name">${review.name} <span>verified-buyer</span></div>
+              <div class="flag">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBRKEdduu36os2L-A9bJ3tB6xnTAso24KLmg&s" alt="" />
+                <span>United State</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-body">
+            <div class="star">
+              <div class="stars">${"★".repeat(review.rating)}${"☆".repeat(
+            5 - review.rating
+          )}</div>
+              <div>${review.title}</div>
+            </div>
+            <div class="comment-description">${review.experience}</div>
+            <div class="concern">
+              <div>
+                <div class="concern-head">Whats your age:</div>
+                <div class="concern-cont">${review.age}</div>
+              </div>
+              <div>
+                <div class="concern-head">Skin Concerns:</div>
+                <div class="concern-cont">${review.concern}</div>
+              </div>
+            </div>
+           
+            <div class="share-cont">
+              <div class="share">
+                Was this helpful?
+                <div class="review-actions">
+      <span class="like-btn ${
+        action === "like" ? "liked" : ""
+      }" onclick="like(${start + i})">👍</span>
+      <span class="like-count">${review.likes}</span>
+      <span class="unlike-btn ${
+        action === "dislike" ? "disliked" : ""
+      }" onclick="unlike(${start + i})">👎</span>
+      <span class="like-count">${review.unlikes}</span>
+    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+        });
+
+        renderPagination(); // Update the pagination UI
+      }
+
+      renderReviews();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
