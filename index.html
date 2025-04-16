@@ -44,7 +44,7 @@
 
       .header1 {
         font-family: "TWKLausanne", sans-serif !important;
-        font-size: 35px;
+        font-size: 25px;
         text-transform: capitalize;
         font-weight: 600;
         color: #232323;
@@ -227,6 +227,7 @@
         border: 1px solid #d6d4d4;
         border-radius: 10px;
         margin-top: 9px;
+        margin-bottom: 5px;
         font-family: "TWKLausanne", sans-serif;
         font-size: 12px;
       }
@@ -269,6 +270,8 @@
       .radio-cont {
         display: flex;
         margin-top: 10px;
+        margin-bottom: 8px;
+        gap: 5px;
         align-items: center;
         font-family: "TWKLausanne", sans-serif;
         font-size: 12px;
@@ -784,7 +787,17 @@
       .comment-body {
         flex: 1;
       }
-
+      .see {
+        border-radius: 20px;
+        background-color: #fccdcc;
+        color: #232323;
+        border: none;
+        padding: 5px 20px;
+        font-size: 12px;
+        margin-top: 10px;
+        font-weight: bold !important;
+        font-family: "TWKLausanne", sans-serif;
+      }
       /* Responsive styles */
       @media (max-width: 768px) {
         .layout-container {
@@ -908,6 +921,22 @@
         .review-line-item {
           width: 220px;
         }
+        .headerOne {
+          font-size: 30px;
+        }
+        .header1 {
+          font-size: 30px;
+        }
+      }
+      @media (max-width: 360px) {
+        .review-line-item {
+          width: 150px !important;
+        }
+      }
+      @media (max-width: 330px) {
+        .review-line-item {
+          width: 110px !important;
+        }
       }
     </style>
   </head>
@@ -926,37 +955,40 @@
           <div><i class="fa-solid fa-star"></i></div>
           <div><i class="fa-solid fa-star-half"></i></div>
         </div>
-        <div class="rating-review">Based on 74500 reviews</div>
+        <div class="rating-review">Based on 72256 reviews</div>
       </div>
       <div>
         <div class="my-3">
           <div class="review-line">
-            <div class="mb-1 rate">5<i class="fa-solid fa-star ms-1"></i></div>
+            <div class="mb-1 d-flex align-items-center rate">
+              <div>5</div>
+              <div><i class="fa-solid fa-star ms-1"></i></div>
+            </div>
             <div class="review-line-item">
               <div class="review-color">.</div>
             </div>
-            <div class="review-line-number">(74700)</div>
+            <div class="review-line-number">(72000)</div>
           </div>
           <div class="review-line">
             <div class="mb-1 rate">4<i class="fa-solid fa-star ms-1"></i></div>
             <div class="review-line-item">
               <div class="review-color-two">.</div>
             </div>
-            <div class="review-line-number">(400)</div>
+            <div class="review-line-number">(200)</div>
           </div>
           <div class="review-line">
             <div class="mb-1 rate">3<i class="fa-solid fa-star ms-1"></i></div>
             <div class="review-line-item">
               <div class="review-color-three">.</div>
             </div>
-            <div class="review-line-number">(97)</div>
+            <div class="review-line-number">(50)</div>
           </div>
           <div class="review-line">
             <div class="mb-1 rate">2<i class="fa-solid fa-star ms-1"></i></div>
             <div class="review-line-item">
               <div class="review-color-four"></div>
             </div>
-            <div class="review-line-number">(2)</div>
+            <div class="review-line-number">(5)</div>
           </div>
           <div class="review-line">
             <div class="mb-1 rate">1<i class="fa-solid fa-star ms-1"></i></div>
@@ -968,64 +1000,6 @@
         </div>
       </div>
       <div class="glow-head">
-        <div class="small-img">
-          <div>
-            <img
-              src="https://www.solawave.co/cdn/shop/files/SkincareWand10.webp?v=1743120349&width=800"
-              alt=""
-              onclick="openImage(this.src)"
-            />
-          </div>
-          <div>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRRn6ZVdsEHwtxv9Q31C9Ui5iyhhRdAXFzrw&s"
-              alt=""
-              onclick="openImage(this.src)"
-            />
-          </div>
-          <div>
-            <img
-              src="https://www.solawave.co/cdn/shop/files/sol-pa-d.png?v=1731685677&width=1500"
-              alt=""
-              onclick="openImage(this.src)"
-            />
-          </div>
-          <div>
-            <img
-              src="https://www.solawave.co/cdn/shop/files/RoseGold_7d9402f8-4d73-44e5-95cf-55a62049e656.jpg?v=1743516489&width=1500"
-              alt=""
-              onclick="openImage(this.src)"
-            />
-          </div>
-          <div>
-            <img
-              src="https://www.solawave.co/cdn/shop/files/AdditonalGalleryAssets-Wand-640x640-5_1200x.webp?v=1743451945"
-              alt=""
-              onclick="openImage(this.src)"
-            />
-          </div>
-          <div>
-            <img
-              src="https://www.beautyindependent.com/wp-content/uploads/2021/11/SolaWave-header.jpg"
-              alt=""
-              onclick="openImage(this.src)"
-            />
-          </div>
-          <div>
-            <img
-              src="https://hips.hearstapps.com/hmg-prod/images/chiara-trying-solawave-65b2de528aeba.jpg"
-              alt=""
-              onclick="openImage(this.src)"
-            />
-          </div>
-          <div>
-            <img
-              src="https://www.solawave.co/cdn/shop/articles/Rejuvenating_Skin_With_Red_Light_Therapy.webp?v=1737397370"
-              alt=""
-              onclick="openImage(this.src)"
-            />
-          </div>
-        </div>
         <button class="button-show" onclick="toggleForm()">
           <img
             src="https://static.thenounproject.com/png/3406050-200.png"
@@ -1215,11 +1189,11 @@
       </div>
       <div id="reviewsContainer"></div>
       <div class="uplines">.</div>
-      <div class="pagination">
-        <button onclick="prevPage()"><</button>
-        <div id="paginationNumbers" style="display: inline-block"></div>
-        <!-- THIS MUST EXIST -->
-        <button onclick="nextPage()">></button>
+      <div id="reviewsContainer"></div>
+      <div class="d-flex align-items-center justify-content-center w-100">
+        <button id="seeMoreBtn" class="see" onclick="seeMore()">
+          See More
+        </button>
       </div>
     </div>
 
@@ -1352,16 +1326,27 @@
           })
           .finally(() => {
             if (loading && submitBtn) {
-              loading.style.display = "none"; // Hide extra loader
+              loading.style.display = "none"; // Hide loader
               submitBtn.textContent = "Submit"; // Restore button text
               submitBtn.disabled = false; // Enable button again
             }
 
+            // Reset rating
             selectedRating = 0;
-            document
-              .querySelectorAll(".stars span")
-              .forEach((s) => s.classList.remove("filled"));
+            stars.forEach((s) => {
+              s.classList.remove("filled");
+              s.classList.add("unfilled");
+            });
+
+            // Reset selected concern
+            selectedConcern = "";
+            boxes1.forEach((b) => b.classList.remove("selected1"));
+            boxes.forEach((b) => b.classList.remove("selected"));
+
+            // Reset form
             event.target.reset();
+
+            // Hide the form
             toggleForm();
           });
       }
@@ -1521,16 +1506,17 @@
       }
 
       fetchReviews();
+      let visibleCount = 5; // Initial visible reviews
+
       function renderReviews() {
         const container = document.getElementById("reviewsContainer");
         const allReviews = filteredReviews();
-        const start = (currentPage - 1) * perPage;
-        const end = start + perPage;
-        const pageReviews = allReviews.slice(start, end);
+        const pageReviews = allReviews.slice(0, visibleCount);
 
         container.innerHTML = ""; // Clear the container
 
         pageReviews.forEach((review, i) => {
+          // Calculate time ago
           let timeAgo = review?.created;
           const now = new Date();
           const createdDate = new Date(timeAgo);
@@ -1563,103 +1549,89 @@
 
           const action = userActions[review._id];
           container.innerHTML += `
-    <div class="uplines">.</div>
-    <div class="layout-container">
-      <!-- Left Sidebar -->
-      <div class="left-sidebar">
-        <div class="sidebar-toggle" id="sidebarToggle-${i}">
-          <div class="sidebar-toggle d-flex align-items-center justify-content-between" id="sidebarToggle-${i}">
-            <div class="review-head">
-              <div class="profile-cont">
-                <div class="Profile2">${review.name.charAt(0)}</div>
-              </div>
-              <div>
-                <div class="name2">${review.name}</div>
-                <div class="d-flex align-items-center">
-                  <div class="verified2">Verified buyer</div>
-                  <div class="checked"><img src="https://static.vecteezy.com/system/resources/thumbnails/047/309/930/small/verified-badge-profile-icon-png.png" width="10px"/></div>
+      <div class="uplines">.</div>
+      <div class="layout-container">
+        <div class="left-sidebar">
+          <div class="sidebar-toggle" id="sidebarToggle-${i}">
+            <div class="sidebar-toggle d-flex align-items-center justify-content-between" id="sidebarToggle-${i}">
+              <div class="review-head">
+                <div class="profile-cont">
+                  <div class="Profile2">${review.name.charAt(0)}</div>
+                </div>
+                <div>
+                  <div class="name2">${review.name}</div>
+                  <div class="d-flex align-items-center">
+                    <div class="verified2">Verified buyer</div>
+                    <div class="checked"><img src="https://static.vecteezy.com/system/resources/thumbnails/047/309/930/small/verified-badge-profile-icon-png.png" width="10px"/></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <span id="toggleIcon-${i}"><i class="fa-solid fa-chevron-down"></i></span> 
-          </div>
-        </div>
-        <div class="sidebar-content" id="sidebarContent-${i}">
-          <div class="review-head">
-            <div class="profile-cont">
-              <div class="Profile">${review.name.charAt(0)}</div>
-            </div>
-            <div>
-              <div class="name">${review.name}</div>
+              <span id="toggleIcon-${i}"><i class="fa-solid fa-chevron-down"></i></span> 
             </div>
           </div>
-          <div class="side-cont">
-            <div>
-              <img
-                src="https://www.solawave.co/cdn/shop/files/RadiantRenewalSkincareWandKitLightBoostSerum-Gold.webp?v=1743120349&width=1200"
-                alt=""
-              />
-            </div>
-            <div>
-              <div class="side-head">Reviewing</div>
-              <div class="side-content">
-                4-in-1 Red Light Therapy Wand & Activating Serum Kit
+          <div class="sidebar-content" id="sidebarContent-${i}">
+            <div class="review-head">
+              <div class="profile-cont">
+                <div class="Profile">${review.name.charAt(0)}</div>
               </div>
-              <div class="side-content2">Rose Gold</div>
+              <div>
+                <div class="name">${review.name}</div>
+              </div>
+            </div>
+            <div class="side-cont">
+              <div>
+                <img src="https://www.solawave.co/cdn/shop/files/RadiantRenewalSkincareWandKitLightBoostSerum-Gold.webp?v=1743120349&width=1200" alt="" />
+              </div>
+              <div>
+                <div class="side-head">Reviewing</div>
+                <div class="side-content">Beef Tallow Balm</div>
+                <div class="side-content2">Rose Gold</div>
+              </div>
+            </div>
+            <div class="foot">
+              <div class="like"><img src="https://icons.iconarchive.com/icons/fa-team/fontawesome/256/FontAwesome-Thumbs-Up-icon.png" alt=""/></div>
+              <div>I recommend this product</div>
             </div>
           </div>
-          <div class="foot">
-            <div class="like">
-              <img
-                src="https://icons.iconarchive.com/icons/fa-team/fontawesome/256/FontAwesome-Thumbs-Up-icon.png"
-                alt=""
-              />
+        </div>
+        <div class="comment-body">
+          <div class="star">
+            <div class="stars">
+              ${[...Array(5)]
+                .map(
+                  (_, index) =>
+                    `<span class="stars ${
+                      index < review.rating ? "filled" : "unfilled"
+                    }"><i class="fa-solid fa-star"></i></span>`
+                )
+                .join("")}
             </div>
-            <div>I recommend this product</div>
+            <div class="Date">${timeAgo}</div>
+          </div>
+          <div class="comment-description">${review.title}</div>
+          <div class="comment-description">${review.concern}</div>
+          <div class="d-flex align-items-center justify-content-between my-3">
+            <div class="verified">Verified by <span>shop</span></div>
+            <div class="share">
+              Was this helpful?
+              <div class="review-actions">
+                <span class="like-btn ${
+                  action === "like" ? "liked" : ""
+                }" onclick="like(${i})">👍</span>
+                <span class="like-count">${review.likes}</span>
+                <span class="unlike-btn ${
+                  action === "dislike" ? "disliked" : ""
+                }" onclick="unlike(${i})">👎</span>
+                <span class="like-count">${review.unlikes}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="comment-body">
-        <div class="star">
-          <div class="stars">
-            ${[...Array(5)]
-              .map(
-                (_, index) => `
-                  <span class="stars ${
-                    index < review.rating ? "filled" : "unfilled"
-                  }"><i class="fa-solid fa-star"></i></span>
-                `
-              )
-              .join("")}
-          </div>
-          <div class="Date">${timeAgo}</div>
-        </div>
-        <div class="comment-description">${review.title}</div>
-        <div class="comment-description">${review.concern}</div>
-
-        <div class="d-flex align-items-center justify-content-between my-3">
-          <div class="verified">Verified by <span>shop</span></div>
-          <div class="share">
-            Was this helpful?
-            <div class="review-actions">
-              <span class="like-btn ${
-                action === "like" ? "liked" : ""
-              }" onclick="like(${start + i})">👍</span>
-              <span class="like-count">${review.likes}</span>
-              <span class="unlike-btn ${
-                action === "dislike" ? "disliked" : ""
-              }" onclick="unlike(${start + i})">👎</span>
-              <span class="like-count">${review.unlikes}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
+    `;
         });
 
-        // Attach toggle logic after rendering all reviews
+        // Attach toggle logic for sidebar
         pageReviews.forEach((review, i) => {
           const toggleBtn = document.getElementById(`sidebarToggle-${i}`);
           const sidebarContent = document.getElementById(`sidebarContent-${i}`);
@@ -1671,7 +1643,6 @@
           if (toggleBtn && sidebarContent && toggleIcon) {
             toggleBtn.addEventListener("click", () => {
               sidebarContent.classList.toggle("active");
-              // Toggle the icon based on the active class
               toggleIcon.innerHTML = sidebarContent.classList.contains("active")
                 ? arrowUp
                 : arrowDown;
@@ -1679,11 +1650,23 @@
           }
         });
 
-        renderPagination(); // Refresh pagination
+        // Hide button if all reviews are shown
+        const seeMoreBtn = document.getElementById("seeMoreBtn");
+        if (visibleCount >= allReviews.length) {
+          seeMoreBtn.style.display = "none";
+        } else {
+          seeMoreBtn.style.display = "block";
+        }
+      }
+
+      function seeMore() {
+        visibleCount += 5;
+        renderReviews();
       }
 
       renderReviews();
     </script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
