@@ -52,11 +52,13 @@
       .like-btn,
       .unlike-btn {
         cursor: pointer;
+        color: #ad686f6d !important;
+
         transition: color 0.3s ease;
       }
 
       .liked {
-        color: green;
+        color: #ad686f !important;
       }
 
       .disliked {
@@ -79,6 +81,8 @@
       .rating-cont {
         display: flex;
         gap: 10px;
+        margin-left: 3px;
+        font-size: 13px !important;
         color: #fdcc0d;
       }
       .rating-review {
@@ -487,6 +491,11 @@
           margin-left: 5px;
         }
       }
+      .review-actions {
+        color: #ad686f;
+        font-weight: bold;
+        font-family: "TWKLausanne", sans-serif;
+      }
       .verified {
         font-size: 11px;
         color: #232323;
@@ -567,15 +576,13 @@
         font-family: "TWKLausanne", sans-serif;
       }
       .share {
+        color: #ad686f !important;
         display: flex;
+        font-weight: bold;
         align-items: center;
         font-size: 12px;
-
         font-family: "TWKLausanne", sans-serif;
-        img {
-          width: 13px;
-          margin-top: 5px;
-        }
+        margin-right: 5px;
       }
       .share-cont {
         display: flex;
@@ -760,10 +767,31 @@
       }
       .comment-description {
         color: #232323;
+        font-size: 15px;
+        margin-top: 10px;
+        font-weight: 700 !important;
+        font-family: "TWKLausanne", sans-serif;
+      }
+      .comment-description2 {
+        color: #232323;
         font-size: 13px;
         margin-top: 10px;
-        font-weight: bold !important;
+        font-weight: 500 !important;
         font-family: "TWKLausanne", sans-serif;
+      }
+      .comment-description3 {
+        color: #232323;
+        font-size: 13px;
+        margin-top: 10px;
+        font-weight: 400 !important;
+        font-family: "TWKLausanne", sans-serif;
+        span {
+          color: #232323;
+          font-size: 13px;
+          margin-top: 10px;
+          font-weight: 800 !important;
+          font-family: "TWKLausanne", sans-serif;
+        }
       }
       .layout-container {
         display: flex;
@@ -797,6 +825,29 @@
         margin-top: 10px;
         font-weight: bold !important;
         font-family: "TWKLausanne", sans-serif;
+      }
+      .star-wrapper {
+        position: relative;
+        width: 24px; /* match icon size */
+        height: 17px;
+        margin-top: 4px;
+      }
+
+      .star-warp {
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 1;
+      }
+
+      .gold {
+        color: gold;
+        clip-path: inset(0 50% 0 0); /* show left half */
+      }
+
+      .gray {
+        color: #e3e3e3;
+        clip-path: inset(0 0 0 50%); /* show right half */
       }
       /* Responsive styles */
       @media (max-width: 768px) {
@@ -927,10 +978,16 @@
         .header1 {
           font-size: 30px;
         }
+        .review-line-number {
+          font-size: 9px !important;
+        }
+        .rating-review {
+          font-size: 9px;
+        }
       }
       @media (max-width: 360px) {
         .review-line-item {
-          width: 150px !important;
+          width: 140px !important;
         }
       }
       @media (max-width: 330px) {
@@ -953,7 +1010,10 @@
           <div><i class="fa-solid fa-star"></i></div>
           <div><i class="fa-solid fa-star"></i></div>
           <div><i class="fa-solid fa-star"></i></div>
-          <div><i class="fa-solid fa-star-half"></i></div>
+          <div class="star-wrapper">
+            <i class="fas fa-star star-warp gold"></i>
+            <i class="fas fa-star star-warp gray"></i>
+          </div>
         </div>
         <div class="rating-review">Based on 72256 reviews</div>
       </div>
@@ -1144,7 +1204,7 @@
             <input type="file" id="fileInput" accept="image/*" />
 
             <!-- Clickable div -->
-            <div
+            <!-- <div
               class="photo"
               onclick="document.getElementById('fileInput').click()"
             >
@@ -1155,7 +1215,7 @@
                 />
               </div>
               Add Photos
-            </div>
+            </div> -->
           </div>
         </div>
       </form>
@@ -1173,7 +1233,7 @@
         </div>
       </div>
       <div class="select-cont mt-5">
-        <div>1082 reviews</div>
+        <div>72256 reviews</div>
         <div class="d-flex align-items-center gap-3">
           <span class="">Sort</span>
           <div>
@@ -1350,56 +1410,106 @@
             toggleForm();
           });
       }
-
       function like(index) {
         const review = filteredReviews()[index];
         const reviewId = review._id;
-
         const action = userActions[reviewId];
 
         if (action === "like") {
-          // Already liked - ignore or toggle (optional)
-          return;
-        }
+          // Undo like → Just remove like (decrement like count)
+          fetch(
+            `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
+            {
+              method: "POST",
+            }
+          )
+            .then((res) => res.json())
+            .then((updatedReview) => {
+              reviews[reviews.findIndex((r) => r._id === reviewId)] =
+                updatedReview;
+              delete userActions[reviewId];
+              renderReviews();
+            });
+        } else {
+          // First undo a previous dislike, then like if needed
+          const undoDislike =
+            action === "dislike"
+              ? fetch(
+                  `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
+                  {
+                    method: "POST",
+                  }
+                ).then((res) => res.json())
+              : Promise.resolve();
 
-        fetch(`https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`, {
-          method: "POST",
-        })
-          .then((res) => res.json())
-          .then((updatedReview) => {
-            const actualIndex = reviews.findIndex((r) => r._id === reviewId);
-            reviews[actualIndex] = updatedReview;
-            userActions[reviewId] = "like";
-            renderReviews();
-          })
-          .catch((err) => console.error("Error liking review:", err));
+          undoDislike
+            .then(() => {
+              return fetch(
+                `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
+                {
+                  method: "POST",
+                }
+              );
+            })
+            .then((res) => res.json())
+            .then((updatedReview) => {
+              reviews[reviews.findIndex((r) => r._id === reviewId)] =
+                updatedReview;
+              userActions[reviewId] = "like";
+              renderReviews();
+            });
+        }
       }
 
       function unlike(index) {
         const review = filteredReviews()[index];
         const reviewId = review._id;
-
         const action = userActions[reviewId];
 
         if (action === "dislike") {
-          // Already disliked - ignore or toggle (optional)
-          return;
-        }
+          // Undo dislike → Just remove dislike (decrement dislike count)
+          fetch(
+            `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
+            {
+              method: "POST",
+            }
+          )
+            .then((res) => res.json())
+            .then((updatedReview) => {
+              reviews[reviews.findIndex((r) => r._id === reviewId)] =
+                updatedReview;
+              delete userActions[reviewId];
+              renderReviews();
+            });
+        } else {
+          // First undo a previous like, then unlike if needed
+          const undoLike =
+            action === "like"
+              ? fetch(
+                  `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
+                  {
+                    method: "POST",
+                  }
+                ).then((res) => res.json())
+              : Promise.resolve();
 
-        fetch(
-          `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
-          {
-            method: "POST",
-          }
-        )
-          .then((res) => res.json())
-          .then((updatedReview) => {
-            const actualIndex = reviews.findIndex((r) => r._id === reviewId);
-            reviews[actualIndex] = updatedReview;
-            userActions[reviewId] = "dislike";
-            renderReviews();
-          })
-          .catch((err) => console.error("Error disliking review:", err));
+          undoLike
+            .then(() => {
+              return fetch(
+                `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
+                {
+                  method: "POST",
+                }
+              );
+            })
+            .then((res) => res.json())
+            .then((updatedReview) => {
+              reviews[reviews.findIndex((r) => r._id === reviewId)] =
+                updatedReview;
+              userActions[reviewId] = "dislike";
+              renderReviews();
+            });
+        }
       }
 
       function filteredReviews() {
@@ -1572,7 +1682,7 @@
           <div class="sidebar-content" id="sidebarContent-${i}">
             <div class="review-head">
               <div class="profile-cont">
-                <div class="Profile">${review.name.charAt(0)}</div>
+                <div class="Profile">${review.name.trim().charAt(0)}</div>
               </div>
               <div>
                 <div class="name">${review.name}</div>
@@ -1580,7 +1690,7 @@
             </div>
             <div class="side-cont">
               <div>
-                <img src="https://www.solawave.co/cdn/shop/files/RadiantRenewalSkincareWandKitLightBoostSerum-Gold.webp?v=1743120349&width=1200" alt="" />
+                <img src="https://media.discordapp.net/attachments/1341110641632739422/1362024034421965031/PRODUCT_PAGE_TALLOW_BALM_LUMINENCE_7.png?ex=6800e33a&is=67ff91ba&hm=93822f0d6791e2b5a00fa210d7b07f2203c9e53b428d3c3909997b066eb77062&=&format=webp&quality=lossless&width=782&height=782" alt="" />
               </div>
               <div>
                 <div class="side-head">Reviewing</div>
@@ -1609,19 +1719,26 @@
             <div class="Date">${timeAgo}</div>
           </div>
           <div class="comment-description">${review.title}</div>
-          <div class="comment-description">${review.concern}</div>
+          <div class="comment-description2">${review.experience}</div>
+          <div class="comment-description3"><span>Skin Problem : </span>${
+            review.concern
+          }</div>
+          <div class="comment-description3"><span>Age : </span>${
+            review.age
+          }</div>
           <div class="d-flex align-items-center justify-content-between my-3">
             <div class="verified">Verified by <span>shop</span></div>
             <div class="share">
               Was this helpful?
-              <div class="review-actions">
-                <span class="like-btn ${
+             
+               <div class="review-actions">
+                <span class=" ms-1 like-btn ${
                   action === "like" ? "liked" : ""
-                }" onclick="like(${i})">👍</span>
+                }" onclick="like(${i})"><i class="fa-solid fa-thumbs-up"></i></span>
                 <span class="like-count">${review.likes}</span>
                 <span class="unlike-btn ${
                   action === "dislike" ? "disliked" : ""
-                }" onclick="unlike(${i})">👎</span>
+                }" onclick="unlike(${i})"><i class="fa-solid fa-thumbs-down"></i></span>
                 <span class="like-count">${review.unlikes}</span>
               </div>
             </div>
