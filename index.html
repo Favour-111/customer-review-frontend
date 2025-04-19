@@ -704,53 +704,7 @@
         display: flex;
         justify-content: space-between;
       }
-      .like-btn.active {
-        color: green;
-      }
-      .unlike-btn.active {
-        color: red;
-      }
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 999;
-        padding-top: 50px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.9);
-      }
 
-      .modal-content {
-        margin: auto;
-        display: block;
-        width: auto !important;
-        max-height: 100%;
-        animation: zoom 0.3s ease-in-out;
-      }
-
-      @keyframes zoom {
-        from {
-          transform: scale(0.5);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
-      .close {
-        position: absolute;
-        top: 0;
-        right: 20px;
-        color: #fff;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-      }
       .Filter-select-cont {
         display: flex;
         align-items: center;
@@ -958,19 +912,10 @@
           display: block;
         }
       }
-      @media screen and (max-width: 768px) {
-        .modal-content {
-          margin: auto;
-          display: block;
-          width: 90% !important;
-          max-height: 100vh !important;
-          margin-top: 30px;
-          animation: zoom 0.3s ease-in-out;
-        }
-      }
+
       @media screen and (max-width: 413px) {
         .review-line-item {
-          width: 220px;
+          width: 260px;
         }
         .headerOne {
           font-size: 30px;
@@ -985,14 +930,19 @@
           font-size: 9px;
         }
       }
-      @media (max-width: 360px) {
+      @media (max-width: 380px) {
         .review-line-item {
-          width: 140px !important;
+          width: 220px !important;
+        }
+      }
+      @media (max-width: 350px) {
+        .review-line-item {
+          width: 200px !important;
         }
       }
       @media (max-width: 330px) {
         .review-line-item {
-          width: 110px !important;
+          width: 180px !important;
         }
       }
     </style>
@@ -1068,12 +1018,6 @@
           />
           Write a Review
         </button>
-      </div>
-
-      <!-- Modal -->
-      <div id="imgModal" class="modal" onclick="closeImage()">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImg" />
       </div>
 
       <div class="linedown"></div>
@@ -1291,25 +1235,6 @@
         });
       });
 
-      // Optional: handle file selection
-      document
-        .getElementById("fileInput")
-        .addEventListener("change", function (event) {
-          const file = event.target.files[0];
-          if (file) {
-            console.log("Selected file:", file.name);
-          }
-        });
-      function openImage(src) {
-        const modal = document.getElementById("imgModal");
-        const modalImg = document.getElementById("modalImg");
-        modal.style.display = "block";
-        modalImg.src = src;
-      }
-
-      function closeImage() {
-        document.getElementById("imgModal").style.display = "none";
-      }
       let selectedRating = 0;
 
       const stars = document.querySelectorAll(".form-star .stars");
@@ -1416,9 +1341,9 @@
         const action = userActions[reviewId];
 
         if (action === "like") {
-          // Undo like → Just remove like (decrement like count)
+          // Undo like
           fetch(
-            `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
+            `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
             {
               method: "POST",
             }
@@ -1431,15 +1356,14 @@
               renderReviews();
             });
         } else {
-          // First undo a previous dislike, then like if needed
           const undoDislike =
             action === "dislike"
               ? fetch(
-                  `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
+                  `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
                   {
                     method: "POST",
                   }
-                ).then((res) => res.json())
+                )
               : Promise.resolve();
 
           undoDislike
@@ -1467,9 +1391,9 @@
         const action = userActions[reviewId];
 
         if (action === "dislike") {
-          // Undo dislike → Just remove dislike (decrement dislike count)
+          // Undo dislike
           fetch(
-            `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
+            `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
             {
               method: "POST",
             }
@@ -1482,15 +1406,14 @@
               renderReviews();
             });
         } else {
-          // First undo a previous like, then unlike if needed
           const undoLike =
             action === "like"
               ? fetch(
-                  `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
+                  `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
                   {
                     method: "POST",
                   }
-                ).then((res) => res.json())
+                )
               : Promise.resolve();
 
           undoLike
@@ -1564,15 +1487,15 @@
 
         for (let i = 1; i <= totalPages; i++) {
           paginationContainer.innerHTML += `
-              <button
-                onclick="goToPage(${i})"
-                style="font-weight: ${
-                  i === currentPage ? "bold" : "normal"
-                }; margin: 0 5px;"
-              >
-                ${i}
-              </button>
-            `;
+                <button
+                  onclick="goToPage(${i})"
+                  style="font-weight: ${
+                    i === currentPage ? "bold" : "normal"
+                  }; margin: 0 5px;"
+                >
+                  ${i}
+                </button>
+              `;
         }
       }
 
@@ -1617,12 +1540,12 @@
 
       fetchReviews();
       let visibleCount = 5; // Initial visible reviews
+      let allReviewsLoaded = false; // Track if all reviews are loaded
 
       function renderReviews() {
         const container = document.getElementById("reviewsContainer");
         const allReviews = filteredReviews();
         const pageReviews = allReviews.slice(0, visibleCount);
-
         container.innerHTML = ""; // Clear the container
 
         pageReviews.forEach((review, i) => {
@@ -1676,7 +1599,7 @@
                   </div>
                 </div>
               </div>
-              <span id="toggleIcon-${i}"><i class="fa-solid fa-chevron-down"></i></span> 
+              <span id="toggleIcon-${i}"><i class="fa-solid fa-chevron-down"></i></span>
             </div>
           </div>
           <div class="sidebar-content" id="sidebarContent-${i}">
@@ -1690,7 +1613,7 @@
             </div>
             <div class="side-cont">
               <div>
-                <img src="https://media.discordapp.net/attachments/1341110641632739422/1362024034421965031/PRODUCT_PAGE_TALLOW_BALM_LUMINENCE_7.png?ex=6800e33a&is=67ff91ba&hm=93822f0d6791e2b5a00fa210d7b07f2203c9e53b428d3c3909997b066eb77062&=&format=webp&quality=lossless&width=782&height=782" alt="" />
+                <img src="https://media.discordapp.net/attachments/1341110641632739422/1362024034421965031/PRODUCT_PAGE_TALLOW_BALM_LUMINENCE_7.png?ex=680234ba&is=6800e33a&hm=493f8892222f1d9de037af7808f100255c4747dc2d2996880563a27e62d9526a&=&format=webp&quality=lossless&width=782&height=782" alt="" />
               </div>
               <div>
                 <div class="side-head">Reviewing</div>
@@ -1730,7 +1653,7 @@
             <div class="verified">Verified by <span>shop</span></div>
             <div class="share">
               Was this helpful?
-             
+
                <div class="review-actions">
                 <span class=" ms-1 like-btn ${
                   action === "like" ? "liked" : ""
@@ -1767,20 +1690,47 @@
           }
         });
 
-        // Hide button if all reviews are shown
+        // Hide "See More" button if all reviews are shown
         const seeMoreBtn = document.getElementById("seeMoreBtn");
-        if (visibleCount >= allReviews.length) {
-          seeMoreBtn.style.display = "none";
-        } else {
-          seeMoreBtn.style.display = "block";
+        const messageContainer = document.getElementById("messageContainer");
+
+        if (visibleCount >= allReviews.length && !allReviewsLoaded) {
+          seeMoreBtn.style.display = "none"; // Hide the "See More" button
+          if (messageContainer) {
+            messageContainer.style.display = "block"; // Show the message
+          }
+          allReviewsLoaded = true; // Mark that all reviews are loaded
+        } else if (visibleCount < allReviews.length) {
+          seeMoreBtn.style.display = "block"; // Show the "See More" button
+          if (messageContainer) {
+            messageContainer.style.display = "none"; // Hide the message
+          }
         }
       }
 
       function seeMore() {
         visibleCount += 5;
         renderReviews();
-      }
 
+        // If all reviews are loaded, hide the "See More" button and show message
+        if (visibleCount >= filteredReviews().length) {
+          const seeMoreBtn = document.getElementById("seeMoreBtn");
+          seeMoreBtn.style.display = "none"; // Hide the button
+          const messageContainer = document.createElement("div");
+          messageContainer.id = "messageContainer";
+          messageContainer.textContent =
+            "Unable to load more reviews due to high traffic. Please try again later.";
+          messageContainer.style.color = "red";
+          messageContainer.style.fontFamily = '"TWKLausanne", sans-serif';
+          messageContainer.style.fontSize = "10px";
+          messageContainer.style.fontWeight = "100px";
+          messageContainer.style.textAlign = "center";
+          messageContainer.style.marginTop = "20px";
+          document
+            .getElementById("reviewsContainer")
+            .appendChild(messageContainer);
+        }
+      }
       renderReviews();
     </script>
 
