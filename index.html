@@ -3,11 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
     <title>Review Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playwrite+MX+Guides&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
     <link
@@ -52,31 +64,37 @@
       .like-btn,
       .unlike-btn {
         cursor: pointer;
-        color: #ad686f6d !important;
+        color: #00802d43 !important;
 
         transition: color 0.3s ease;
       }
 
       .liked {
-        color: #ad686f !important;
+        color: #00802c !important;
       }
 
       .disliked {
         color: red;
       }
       .headerOne {
-        font-family: "Dancing Script", cursive;
-        font-optical-sizing: auto;
-        font-size: 45px;
-        text-transform: capitalize;
-        font-weight: 600;
-        margin-bottom: 5px;
+        font-family: "Anton", sans-serif;
         font-style: normal;
+        font-optical-sizing: auto;
+        font-size: 30px;
+        text-transform: capitalize;
+        font-weight: 400;
+        margin-bottom: 5px;
+        color: #00802c;
+        span {
+          font-family: "Poppins";
+          color: black;
+          font-weight: bold;
+        }
       }
       .header-rating {
-        font-size: 20px;
-        font-weight: bold;
-        font-family: "TWKLausanne", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        font-family: "Anton", sans-serif;
       }
       .rating-cont {
         display: flex;
@@ -87,8 +105,8 @@
       }
       .rating-review {
         font-size: 11px;
-        font-weight: bold;
-        font-family: "TWKLausanne", sans-serif;
+        font-weight: 300;
+        font-family: "Anton", sans-serif;
       }
       .raing {
         display: flex;
@@ -116,11 +134,12 @@
       .review-line {
         margin-top: 2px;
         display: flex;
+        font-family: "Anton", sans-serif;
         align-items: center;
         gap: 10px;
       }
       .rate {
-        font-weight: bold;
+        font-weight: 200;
         font-size: 11.5px;
         i {
           color: #fdcc0d;
@@ -159,9 +178,10 @@
         }
       }
       .review-line-number {
-        font-size: 11px;
-        font-family: "TWKLausanne", sans-serif;
+        font-size: 10px;
+        font-family: "Antonio", sans-serif;
         color: rgba(0, 0, 0, 0.685);
+        font-weight: 400 !important;
       }
       .small-img {
         display: flex;
@@ -183,13 +203,13 @@
         width: 130px;
         border: none;
         border-radius: 20px;
-        background-color: #fdcecd;
-        box-shadow: 2px 0px 17px 0px rgba(252, 205, 204);
-        font-size: 10px;
-        color: #232323;
-        font-weight: bold;
+        background-color: rgb(0, 128, 44);
+        font-size: 12px;
+        color: #fff;
+        font-weight: normal !important;
         text-transform: uppercase;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
+        font-weight: 200;
       }
       .hidden {
         display: none;
@@ -199,7 +219,7 @@
         margin-top: 20px;
         padding: 20px;
         label {
-          font-family: "TWKLausanne", sans-serif;
+          font-family: "Antonio", sans-serif;
           font-size: 11px;
         }
         .form-one {
@@ -244,13 +264,13 @@
         display: flex;
         align-items: center;
         font-size: 12px;
-        font-weight: bold;
+        font-weight: normal;
         border: none !important;
         justify-content: space-between;
+        font-family: "Anton", sans-serif;
         span {
           font-weight: bold;
           font-size: 12px;
-          font-family: "TWKLausanne", sans-serif;
         }
         select {
           border: none;
@@ -277,16 +297,16 @@
         margin-bottom: 8px;
         gap: 5px;
         align-items: center;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
         font-size: 12px;
       }
       .submit {
-        background-color: rgb(252, 205, 204);
-        box-shadow: 2px 0px 17px 0px rgba(252, 205, 204);
+        background-color: rgb(0, 128, 44);
         text-transform: uppercase;
         font-size: 10px;
         border: none;
-        color: black;
+        font-family: "Antonio", sans-serif;
+        color: white;
         padding: 7px 50px;
         border-radius: 10px;
       }
@@ -297,7 +317,7 @@
 
       .photo {
         cursor: pointer;
-        border: 1px solid #fccdcc;
+        border: 1px solid #00802c;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -347,9 +367,9 @@
       }
       .filter-text {
         margin-top: 20px;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Anton", sans-serif;
         font-size: 12px;
-        font-weight: bold;
+        font-weight: normal;
       }
       .filter-cont {
         margin-top: 20px;
@@ -430,19 +450,18 @@
         .side-head {
           font-size: 11px;
           margin-bottom: 2px;
-          font-family: "TWKLausanne", sans-serif;
-          font-weight: 1000;
+          font-family: "Anton", sans-serif;
         }
         .side-content {
           font-size: 11px;
-          font-family: "TWKLausanne", sans-serif;
-          font-weight: bold;
+          font-family: "Antonio", sans-serif;
+          font-weight: 500;
         }
         .side-content2 {
           font-size: 11px;
-          font-family: "TWKLausanne", sans-serif;
+          font-family: "Antonio", sans-serif;
           color: tomato;
-          font-weight: 700;
+          font-weight: 500;
           margin-top: 3px;
         }
       }
@@ -452,37 +471,32 @@
         align-items: center;
         gap: 10px;
         font-size: 11px;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
         color: #232323;
-        font-weight: 600;
+        font-weight: 700;
         .like {
-          background-color: #fccdcc;
+          background-color: #00802c;
           height: 20px;
           width: 20px;
+
+          color: white;
           border-radius: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
-          img {
-            width: 12px;
-          }
+          font-size: 11px;
         }
-      }
-      .line-side {
       }
 
       .name {
         font-size: 12px;
-        font-family: "TWKLausanne", sans-serif;
-        span {
-          font-size: 12px;
-        }
+        font-family: "Antonio", sans-serif;
       }
       .verified2 {
         color: #ad686f;
-        font-weight: 900;
+        font-weight: 500;
         font-size: 12px;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
       }
       .checked {
         img {
@@ -492,18 +506,20 @@
         }
       }
       .review-actions {
-        color: #ad686f;
-        font-weight: bold;
-        font-family: "TWKLausanne", sans-serif;
+        color: #00802dab;
+        font-weight: 700;
+        font-family: "Antonio", sans-serif;
       }
       .verified {
         font-size: 11px;
         color: #232323;
         padding: 2px 5px;
+        font-family: "Antonio", sans-serif;
         border-radius: 3px;
+        font-weight: 200;
         background-color: #e3e3e3;
         span {
-          font-weight: bold;
+          font-weight: 700;
         }
         .flag {
           display: flex;
@@ -527,9 +543,9 @@
         align-items: center;
         margin-top: 10px;
         .Date {
-          font-family: "TWKLausanne", sans-serif;
+          font-family: "Antonio", sans-serif;
           font-size: 11px;
-          font-weight: bold;
+          font-weight: 600;
           color: #232323;
         }
         img {
@@ -566,9 +582,9 @@
         align-items: center;
         justify-content: center;
         border-radius: 40px;
-        font-size: 15px;
-        font-family: "TWKLausanne", sans-serif;
-        font-weight: 700;
+        font-size: 20px;
+        font-family: "Anton", sans-serif;
+        font-weight: normal;
       }
       .type {
         margin-top: 20px;
@@ -576,18 +592,18 @@
         font-family: "TWKLausanne", sans-serif;
       }
       .share {
-        color: #ad686f !important;
+        color: rgba(11, 185, 72, 0.678) !important;
         display: flex;
         font-weight: bold;
         align-items: center;
         font-size: 12px;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
         margin-right: 5px;
       }
       .share-cont {
         display: flex;
         align-items: center;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
         font-size: 12px;
         border-bottom: 1px solid #e3e3e3;
         justify-content: space-between;
@@ -614,13 +630,13 @@
       .label1 {
         font-weight: bold;
         font-size: 15px;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Anton", sans-serif;
       }
       .label2 {
         font-weight: lighter;
         font-size: 11px;
-        margin-bottom: 5px;
-        font-family: "TWKLausanne", sans-serif;
+        margin-bottom: 15px;
+        font-family: "Antonio", sans-serif;
       }
       .box {
         padding: 7px 20px;
@@ -631,13 +647,13 @@
         cursor: pointer;
         background-color: #f4f4f4;
         text-transform: capitalize;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
         transition: background-color 0.3s, border-color 0.3s;
       }
 
       .box.selected {
-        background-color: #fccdcc;
-        color: black;
+        background-color: #00802c;
+        color: #fff;
         border-color: #ad686f;
       }
       .box1 {
@@ -649,13 +665,13 @@
         cursor: pointer;
         background-color: #f4f4f4;
         text-transform: capitalize;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
         transition: background-color 0.3s, border-color 0.3s;
       }
 
       .box1.selected1 {
-        background-color: #fccdcc;
-        color: black;
+        background-color: #00802c;
+        color: #fff;
         border-color: #ad686f;
       }
 
@@ -714,7 +730,7 @@
         font-weight: bold;
       }
       body .uplines {
-        background-color: #fccdcc !important;
+        background-color: #00802c !important;
         height: 1px !important;
         width: 100% !important;
         margin: 20px 0 !important;
@@ -723,28 +739,28 @@
         color: #232323;
         font-size: 15px;
         margin-top: 10px;
-        font-weight: 700 !important;
-        font-family: "TWKLausanne", sans-serif;
+        font-weight: normal !important;
+        font-family: "Anton", sans-serif;
       }
       .comment-description2 {
         color: #232323;
         font-size: 13px;
         margin-top: 10px;
         font-weight: 500 !important;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
       }
       .comment-description3 {
         color: #232323;
-        font-size: 13px;
+        font-size: 12px;
         margin-top: 10px;
         font-weight: 400 !important;
-        font-family: "TWKLausanne", sans-serif;
+        font-family: "Antonio", sans-serif;
         span {
           color: #232323;
-          font-size: 13px;
+          font-size: 12px;
           margin-top: 10px;
-          font-weight: 800 !important;
-          font-family: "TWKLausanne", sans-serif;
+          font-weight: normal !important;
+          font-family: "Anton", sans-serif;
         }
       }
       .layout-container {
@@ -755,7 +771,7 @@
       /* Left Sidebar */
       .left-sidebar {
         width: 250px;
-        border-right: 1px solid #fccdcc;
+        border-right: 1px solid #00802c;
         padding-right: 20px;
       }
 
@@ -771,8 +787,8 @@
       }
       .see {
         border-radius: 20px;
-        background-color: #fccdcc;
-        color: #232323;
+        background-color: #00802c;
+        color: #fff;
         border: none;
         padding: 5px 20px;
         font-size: 12px;
@@ -812,7 +828,7 @@
         .left-sidebar {
           width: 100%;
           border-right: none !important;
-          border-bottom: 1px solid #fccdcc;
+          border-bottom: 1px solid #00802c;
         }
 
         .sidebar-toggle {
@@ -842,7 +858,7 @@
           justify-content: center;
           border-radius: 40px;
           font-size: 15px;
-          font-family: "TWKLausanne", sans-serif;
+          font-family: "Anton", sans-serif;
           font-weight: 700;
         }
         .uplines {
@@ -854,7 +870,7 @@
         .name2 {
           display: block;
           font-size: 12px;
-          font-family: "TWKLausanne", sans-serif;
+          font-family: "Antonio", sans-serif;
           span {
             font-size: 12px;
           }
@@ -903,14 +919,6 @@
             }
           }
         }
-        .sidebar-content {
-          display: none;
-          transition: all 0.3s ease;
-        }
-
-        .sidebar-content.active {
-          display: block;
-        }
       }
 
       @media screen and (max-width: 413px) {
@@ -945,13 +953,22 @@
           width: 180px !important;
         }
       }
+      @media (max-width: 768px) {
+        .sidebar-content {
+          display: none;
+          transition: all 0.3s ease;
+        }
+
+        .sidebar-content.active {
+          display: block;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="body">
       <div class="header-cont">
-        <div class="headerOne">Glowing</div>
-        <div class="header1">Testimonials</div>
+        <div class="headerOne">footballers <span>reviews</span></div>
       </div>
       <div class="d-flex align-items-center gap-2 mt-3">
         <div class="header-rating">4.8</div>
@@ -965,7 +982,7 @@
             <i class="fas fa-star star-warp gray"></i>
           </div>
         </div>
-        <div class="rating-review">Based on 72256 reviews</div>
+        <div class="rating-review">Based on 8567 reviews</div>
       </div>
       <div>
         <div class="my-3">
@@ -977,21 +994,21 @@
             <div class="review-line-item">
               <div class="review-color">.</div>
             </div>
-            <div class="review-line-number">(72000)</div>
+            <div class="review-line-number">(7.9k)</div>
           </div>
           <div class="review-line">
             <div class="mb-1 rate">4<i class="fa-solid fa-star ms-1"></i></div>
             <div class="review-line-item">
               <div class="review-color-two">.</div>
             </div>
-            <div class="review-line-number">(200)</div>
+            <div class="review-line-number">(572)</div>
           </div>
           <div class="review-line">
             <div class="mb-1 rate">3<i class="fa-solid fa-star ms-1"></i></div>
             <div class="review-line-item">
               <div class="review-color-three">.</div>
             </div>
-            <div class="review-line-number">(50)</div>
+            <div class="review-line-number">(88)</div>
           </div>
           <div class="review-line">
             <div class="mb-1 rate">2<i class="fa-solid fa-star ms-1"></i></div>
@@ -1005,17 +1022,13 @@
             <div class="review-line-item">
               <div class="review-color-four"></div>
             </div>
-            <div class="review-line-number">(1)</div>
+            <div class="review-line-number">(2)</div>
           </div>
         </div>
       </div>
       <div class="glow-head">
         <button class="button-show" onclick="toggleForm()">
-          <img
-            src="https://static.thenounproject.com/png/3406050-200.png"
-            width="10px"
-            alt=""
-          />
+          <i class="fa-solid fa-pen me-1"></i>
           Write a Review
         </button>
       </div>
@@ -1110,28 +1123,26 @@
             </select>
           </div>
 
-          <label for="" class="label1 mt-4">Skin Type </label>
+          <label for="" class="label1 mt-4">Position </label>
           <br />
           <label for="" class="label2"> Choose one </label>
           <div class="box-container">
-            <div class="box">oily</div>
-            <div class="box">dry</div>
-            <div class="box">combination</div>
-            <div class="box">normal</div>
-            <div class="box">sensitive</div>
+            <div class="box">GoalKeeper</div>
+            <div class="box">Defender</div>
+            <div class="box">Midfielder</div>
+            <div class="box">Winger</div>
+            <div class="box">Striker</div>
           </div>
-          <label for="" class="label1 mt-4">Skin Concern </label>
+          <label for="" class="label1 mt-4">Where you struggle </label>
           <br />
           <label for="" class="label2"> Choose one </label>
           <div class="box-container">
-            <div class="box1">acne</div>
-            <div class="box1">dullness</div>
-            <div class="box1">puffiness</div>
-            <div class="box1">redness</div>
-            <div class="box1">sagging</div>
-            <div class="box1">texture</div>
-            <div class="box1">Uneven Skin Tone</div>
-            <div class="box1">Wrinkles/Fine Lines</div>
+            <div class="box1">Stamina</div>
+            <div class="box1">Shot Power</div>
+            <div class="box1">Dribbling</div>
+            <div class="box1">Defending</div>
+            <div class="box1">Ball Control</div>
+            <div class="box1">Speed</div>
           </div>
 
           <label style="margin-top: 10px">Do you recommend this product?</label>
@@ -1177,7 +1188,7 @@
         </div>
       </div>
       <div class="select-cont mt-5">
-        <div>72256 reviews</div>
+        <div>8567 reviews</div>
         <div class="d-flex align-items-center gap-3">
           <span class="">Sort</span>
           <div>
@@ -1203,7 +1214,7 @@
 
     <script>
       const boxes = document.querySelectorAll(".box");
-
+      let selectedPosition = "";
       boxes.forEach((box) => {
         box.addEventListener("click", () => {
           // Remove 'selected' class from all boxes
@@ -1213,7 +1224,7 @@
           box.classList.add("selected");
 
           // Log the content
-          console.log(box.textContent.trim());
+          selectedPosition = box.textContent.trim();
         });
       });
       let selectedConcern = ""; // Variable to store selected box1 content
@@ -1280,12 +1291,14 @@
         // Capture the review data
         const newReview = {
           name: document.getElementById("name").value,
+          page: "Page1",
           email: document.getElementById("email").value,
           rating: selectedRating,
           title: document.getElementById("title").value,
           experience: document.getElementById("description").value,
           age: document.getElementById("age")?.value,
           concern: selectedConcern,
+          position: selectedPosition,
           recommend: document.querySelector('input[name="recommend"]:checked')
             ?.value,
           likes: 0,
@@ -1294,7 +1307,7 @@
         };
 
         // Send the review to the API endpoint
-        fetch("https://review-j8y6.onrender.com/api/reviews", {
+        fetch("https://review2-mxit.onrender.com/api/reviews", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newReview),
@@ -1343,7 +1356,7 @@
         if (action === "like") {
           // Undo like
           fetch(
-            `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
+            `https://review2-mxit.onrender.com/api/reviews${reviewId}/unlike`,
             {
               method: "POST",
             }
@@ -1359,7 +1372,7 @@
           const undoDislike =
             action === "dislike"
               ? fetch(
-                  `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
+                  `https://review2-mxit.onrender.com/api/reviews/${reviewId}/like`,
                   {
                     method: "POST",
                   }
@@ -1369,7 +1382,7 @@
           undoDislike
             .then(() => {
               return fetch(
-                `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
+                `https://review2-mxit.onrender.com/api/reviews/${reviewId}/like`,
                 {
                   method: "POST",
                 }
@@ -1393,7 +1406,7 @@
         if (action === "dislike") {
           // Undo dislike
           fetch(
-            `https://review-j8y6.onrender.com/api/reviews/${reviewId}/like`,
+            `https://review2-mxit.onrender.com/api/reviews/${reviewId}/like`,
             {
               method: "POST",
             }
@@ -1409,7 +1422,7 @@
           const undoLike =
             action === "like"
               ? fetch(
-                  `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
+                  `https://review2-mxit.onrender.com/api/reviews/${reviewId}/unlike`,
                   {
                     method: "POST",
                   }
@@ -1419,7 +1432,7 @@
           undoLike
             .then(() => {
               return fetch(
-                `https://review-j8y6.onrender.com/api/reviews/${reviewId}/unlike`,
+                `https://review2-mxit.onrender.com/api/reviews/${reviewId}/unlike`,
                 {
                   method: "POST",
                 }
@@ -1522,12 +1535,12 @@
         const loadingText = document.getElementById("loadingText");
         loadingText.style.display = "block"; // Show loading text
 
-        await fetch("https://review-j8y6.onrender.com/api/reviews")
+        await fetch("https://review2-mxit.onrender.com/api/reviews")
           .then((response) => {
             return response.json();
           })
           .then((data) => {
-            reviews = data;
+            reviews = data.filter((r) => r.page === "Page1");
             renderReviews();
           })
           .catch((error) => {
@@ -1613,16 +1626,15 @@
             </div>
             <div class="side-cont">
               <div>
-                <img src="https://media.discordapp.net/attachments/1341110641632739422/1362024034421965031/PRODUCT_PAGE_TALLOW_BALM_LUMINENCE_7.png?ex=680234ba&is=6800e33a&hm=493f8892222f1d9de037af7808f100255c4747dc2d2996880563a27e62d9526a&=&format=webp&quality=lossless&width=782&height=782" alt="" />
+                <img src="https://futbol-max.com/cdn/shop/files/THE_ANKLE_WEIGHTS_25.png?v=1745316132&width=823" alt="" />
               </div>
               <div>
                 <div class="side-head">Reviewing</div>
-                <div class="side-content">Beef Tallow Balm</div>
-                <div class="side-content2">Rose Gold</div>
+                <div class="side-content">CR7 FORMULA™</div>
               </div>
             </div>
             <div class="foot">
-              <div class="like"><img src="https://icons.iconarchive.com/icons/fa-team/fontawesome/256/FontAwesome-Thumbs-Up-icon.png" alt=""/></div>
+              <div class="like"><i class="fa-solid fa-thumbs-up"></i></div>
               <div>I recommend this product</div>
             </div>
           </div>
@@ -1643,8 +1655,8 @@
           </div>
           <div class="comment-description">${review.title}</div>
           <div class="comment-description2">${review.experience}</div>
-          <div class="comment-description3"><span>Skin Problem : </span>${
-            review.concern
+          <div class="comment-description3"><span>Position : </span>${
+            review.position
           }</div>
           <div class="comment-description3"><span>Age : </span>${
             review.age
